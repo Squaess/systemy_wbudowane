@@ -1,0 +1,7 @@
+v 4
+file . "zad4_tb.vhdl" "02ebb66143f6627a640bb28b3d4829ed12b3aaea" "20180220114948.981":
+  entity zad4_tb at 1( 0) + 0 on 35;
+  architecture behav of zad4_tb at 4( 32) + 0 on 36;
+file . "zad4.vhdl" "192a94dbcba7b3610b5f3218537eddc38863b220" "20180220114943.384":
+  entity zad4 at 1( 0) + 0 on 33;
+  architecture rtl of zad4 at 5( 69) + 0 on 34;
