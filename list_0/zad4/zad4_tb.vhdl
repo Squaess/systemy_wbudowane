@@ -19,18 +19,24 @@ begin
     type pattern_array is array (natural range <>) of pattern_type;
     constant patterns : pattern_array :=
     (('0','0','0','0','0'),
-     ('0','0','1','0','1'));
+     ('0','0','1','0','0'),
+     ('0','1','0','0','1'),
+     ('0','1','1','0','0'),
+     ('1','0','0','1','0'),
+     ('1','0','1','0','1'),
+     ('1','1','0','0','0'),
+     ('1','1','1','0','1'));
 
   begin
     for i in patterns'range loop
       a <= patterns(i).a;
       b <= patterns(i).b;
       c <= patterns(i).c;
-      wait for 2 ns;
+      wait for 1 ns;
       assert x = patterns(i).x
-        report "cos nie wiem" severity error;
+        report "wrong x value" severity error;
       assert y = patterns(i).y
-        report "cos tam 2" severity error;
+        report "wrong y value" severity error;
     end loop;
     assert false report "end of test" severity note;
     wait;

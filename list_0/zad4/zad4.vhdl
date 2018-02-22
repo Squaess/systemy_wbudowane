@@ -5,5 +5,5 @@ end zad4;
 architecture rtl of zad4 is
 begin
   x <= (not (a or b)) nor  (not (b nor c));
-  y <= (not (a nor c)) and (not (a xor b));
+  y <= (not (b nor c)) and (not (a xor c));
 end rtl;
