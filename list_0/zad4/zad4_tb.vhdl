@@ -18,8 +18,8 @@ begin
     end record;
     type pattern_array is array (natural range <>) of pattern_type;
     constant patterns : pattern_array :=
-    (('0','0','0','0','0'),
-     ('0','0','1','0','0'),
+    (('0','0','0','0','1'),
+     ('0','0','1','0','1'),
      ('0','1','0','0','1'),
      ('0','1','1','0','0'),
      ('1','0','0','1','0'),
