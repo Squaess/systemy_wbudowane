@@ -6,10 +6,10 @@ USE ieee.std_logic_1164.ALL;
 use ieee.numeric_std.all;
 
 
-ENTITY example_tb IS
-END example_tb;
+ENTITY zad5_tb IS
+END zad5_tb;
 
-ARCHITECTURE behavior OF example_tb IS
+ARCHITECTURE behavior OF zad5_tb IS
 
     -- deklaracja komponentu Unit Under Test (UUT)
 
@@ -18,7 +18,9 @@ ARCHITECTURE behavior OF example_tb IS
          a : IN  std_logic;
          b : IN  std_logic;
          c : IN  std_logic;
-         x : OUT  std_logic
+         d : IN std_logic;
+         x : OUT  std_logic;
+         y : OUT std_logic
         );
     END COMPONENT;
 
@@ -26,13 +28,15 @@ ARCHITECTURE behavior OF example_tb IS
    signal a : std_logic := '0';
    signal b : std_logic := '0';
    signal c : std_logic := '0';
+   signal d : std_logic := '0';
 
 -- sprawdz dzialanie obu ponizszych, alternatywnych deklaracji
 --   signal abc : std_logic_vector(2 downto 0) := (others => '0');
-    signal abc : unsigned(2 downto 0) := (others => '0');
+    signal abc : unsigned(3 downto 0) := (others => '0');
 
    --Outputs
    signal x : std_logic;
+   signal y : std_logic;
 
    -- okres zegara
    constant period : time := 10 ns;
@@ -44,7 +48,9 @@ BEGIN
           a => a,
           b => b,
           c => c,
-          x => x
+          d => d,
+          x => x,
+          y => y
         );
 
    -- Stimulus process
@@ -59,47 +65,9 @@ BEGIN
 	a <= '0';
 	b <= '0';
 	c <= '1';
-	wait for period;
-  assert x = '0'
-    report "wrong x value" severity error;
-	a <= '0';
-	b <= '1';
-	c <= '0';
-	wait for period;
-  assert x = '0'
-    report "wrong x value" severity error;
+  d <= '0';
 
-	a <= '0';
-	b <= '1';
-	c <= '1';
 	wait for period;
-  assert x = '0'
-    report "wrong x value" severity error;
-
-	a <= '1';
-	b <= '0';
-	c <= '0';
-	wait for period;
-  assert x = '1'
-    report "wrong x value" severity error;
-
-	a <= '1';
-	b <= '0';
-	c <= '1';
-	wait for period;
-  assert x = '0'
-    report "wrong x value" severity error;
-
-	a <= '1';
-	b <= '1';
-	c <= '0';
-	wait for period;
-  assert x = '0'
-    report "wrong x value" severity error;
-
-	a <= '1';
-	b <= '1';
-	c <= '1';
   assert x = '0'
     report "wrong x value" severity error;
 
@@ -115,16 +83,10 @@ BEGIN
 --  i ten:
     abc <= abc + 1;
 
-	  a <= abc(2);
-	  b <= abc(1);
-	  c <= abc(0);
-    if (a = '1') and (b = '0') and (c = '0')  then
-      assert x = '1'
-        report "wrong x value" severity error;
-    else
-      assert x = '0'
-        report "wrong x value" severity error;
-    end if;
+	  a <= abc(3);
+	  b <= abc(2);
+	  c <= abc(1);
+    d <= abc(0);
 
 	  wait for period;
 
