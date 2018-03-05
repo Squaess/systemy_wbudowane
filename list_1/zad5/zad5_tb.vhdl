@@ -55,6 +55,29 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
+     type pattern_type is record
+       x, y : std_logic;
+     end record;
+     type pattern_array is array (natural range <>) of pattern_type;
+     constant patterns : pattern_array :=
+     (('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('0','1'),
+      ('1','1'),
+      ('1','1'),
+      ('0','0'),
+      ('0','0'));
+
+
    begin
       -- hold reset state for 100 ns.
       wait for 100 ns;
@@ -74,7 +97,7 @@ BEGIN
 	wait for 10*period;
 
 	-- another way to do this...
-	for i in 0 to 6 loop
+	for i in 0 to 15 loop
 -- w zaleznosci od tego, jak zadeklarowano sygnal 'abc',
 --     mozna go zwiekszyc na rozne sposoby
 -- sprawdz, ktory pasuje do ktorej deklaracji
@@ -89,7 +112,11 @@ BEGIN
     d <= abc(0);
 
 	  wait for period;
+    assert x = patterns(i).x
+      report "wrong x value" severity error;
 
+    assert y = patterns(i).y
+      report "wrong y value" severity error;
 
 	end loop;
 

@@ -52,6 +52,12 @@ begin
     assert c = "001"
       report "wrong c value" severity error;
 
+    A <= "111";
+    B <= "111";
+    wait for 1 ns;
+    assert c ="111"
+      report "wrong c value" severity error;
+
     wait;
   end process;
 end behavior;
