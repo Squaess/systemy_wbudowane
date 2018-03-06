@@ -1,0 +1,7 @@
+v 4
+file . "twoway_tb.vhd" "372640601786a78c20a9d13c43e02f5c38e8c153" "20180306115501.025":
+  entity twoway_tb at 1( 0) + 0 on 17;
+  architecture behavior of twoway_tb at 8( 106) + 0 on 18;
+file . "twoway.vhd" "dd78a453719549e8f3275d98d7d205226c21a917" "20180306115505.438":
+  entity twoway at 1( 0) + 0 on 21;
+  architecture behavioral of twoway at 13( 272) + 0 on 22;
