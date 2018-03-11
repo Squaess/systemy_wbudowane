@@ -8,10 +8,11 @@ END twoway_tb;
 ARCHITECTURE behavior OF twoway_tb IS
 
   -- UUT
-  component twoway
+  component twoway is
+  generic(NBit : positive);
   port(
       clk: in std_logic;
-      q: out STD_LOGIC_VECTOR(7 downto 0)
+      q: out STD_LOGIC_VECTOR(NBit-1 downto 0)
   );
 end component;
 
@@ -21,7 +22,8 @@ signal q : STD_LOGIC_VECTOR(7 downto 0);
 constant clk_period : time := 20 ns;
 
 begin
-  uut: twoway port map(
+  uut: twoway generic map(NBit => 8)
+  port map(
       clk => clk,
       q => q
   );
