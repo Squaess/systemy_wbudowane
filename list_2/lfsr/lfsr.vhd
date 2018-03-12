@@ -15,8 +15,7 @@ BEGIN
   BEGIN
 	q(15 downto 1) <= q(14 downto 0);
 	q(0) <= not(q(15) XOR q(14) XOR q(13) XOR q(4));
-	
+
 	WAIT UNTIL clk'event AND clk='1';
   END PROCESS;
 END Behavioral;
-
