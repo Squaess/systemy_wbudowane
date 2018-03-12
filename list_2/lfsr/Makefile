@@ -4,7 +4,7 @@ zadanie: ${ex}.vhd ${ex}_tb.vhd
 	ghdl -a ${ex}.vhd
 	ghdl -a ${ex}_tb.vhd
 	ghdl -e ${ex}_tb
-	ghdl -r ${ex}_tb --stop-time=16400ns
+	ghdl -r ${ex}_tb --stop-time=2000ns
 
 clean:
 	rm -f *.o
@@ -14,5 +14,5 @@ wave:
 	ghdl -a ${ex}.vhd
 	ghdl -a ${ex}_tb.vhd
 	ghdl -e ${ex}_tb
-	ghdl -r ${ex}_tb --vcd=example.vcd --stop-time=16400ns
+	ghdl -r ${ex}_tb --vcd=example.vcd --stop-time=2000ns
 	gtkwave example.vcd
