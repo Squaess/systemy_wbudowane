@@ -29,8 +29,10 @@ ARCHITECTURE behavior OF crc8_tb IS
 	-- CRC generator data
 	-- input
    signal data_in : std_logic_vector(7 downto 0) := ('1', '1', others => '0');
+   signal data_in_2 : std_logic_vector(7 downto 0) := ('1', '1', others => '0');
    -- output
    signal crc_out : std_logic_vector(7 downto 0);
+   signal crc_out_2 : std_logic_vector(7 downto 0);
 
 	-- ROM
    -- output data
@@ -48,6 +50,13 @@ BEGIN
           data_in => data_in,
           crc_out => crc_out
         );
+
+    --  Second crc
+    uut_2: crc8 PORT MAP(
+      clk => clk,
+      data_in => data_in_2,
+      crc_out => crc_out_2
+    );
 
 	 -- instance of ROM lookup for constant X"a0" input
 	 rom_a0 : entity work.rom_for_crc8(const_a0)
@@ -80,18 +89,36 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-      data_in <= X"a0";
    begin
 
 		-- input your code here
     wait until (rising_edge(clk) and clk = '1');
 
       address <=  std_logic_vector( unsigned(address) + 1 );
-
+      wait for clk_period*0.2;
       assert crc_out = data_out_a0
         report "wrong crc value" severity error;
-
       -- wait;
    end process;
+
+   -- Stimulus process
+   stim_proc_2: process
+   begin
+
+		-- input your code here
+    wait until (rising_edge(clk) and clk = '1');
+
+      wait for clk_period*0.2;
+      assert crc_out_2 = data_out_66
+        report "wrong crc value" severity error;
+      -- wait;
+   end process;
+
+   some_proc: process
+   BEGIN
+   data_in <= X"a0";
+   data_in_2 <= X"66";
+   wait;
+ end process;
 
 END;
