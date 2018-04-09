@@ -17,5 +17,5 @@ wave:
 	ghdl -a ${ex}.vhd
 	ghdl -a ${ex}_tb.vhd
 	ghdl -e ${ex}_tb
-	ghdl -r ${ex}_tb --vcd=example.vcd --stop-time=10000300ns
+	ghdl -r ${ex}_tb --vcd=example.vcd --stop-time=40001200ns
 	gtkwave example.vcd

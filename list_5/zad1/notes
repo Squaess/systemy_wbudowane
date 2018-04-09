@@ -1,0 +1,10 @@
+dla częstotliwości wejściowej 125 Mhz
+
+jeśli chcemy otrzymać 50 Mhz to tak naprawde dostajemy 62,5 Mhz
+Okres oczekiwany: 20ns Otrzymany: 16ns Błąd: 20%
+
+Dla częstotliwości: 100Hz wszystko się zgadza
+Oczekiwany okres: 0,01s Otrzymany: 0,01s Błąd: 0
+
+Dla częstotliwości: 1.1 kHz
+Oczekiwany okres: 0.0009090909... Otrzymany: 0,000909088 Błąd: 0,0003%
